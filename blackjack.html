@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Blackjack Oyunu</title>
+  <style>
+    body {
+      background: #1a1a1a;
+      color: white;
+      font-family: Arial;
+      text-align: center;
+      padding-top: 100px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Blackjack</h2>
+  <p id="info">Kartlar: <span id="cards">-</span></p>
+  <p>Toplam: <span id="total">0</span></p>
+  <button onclick="hit()">Kart Çek</button>
+  <button onclick="reset()">Yeniden Başla</button>
+
+  <script>
+    // Giriş kontrolü
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Lütfen giriş yapın.");
+      window.location.href = "index.html";
+    }
+
+    let cards = [];
+    function hit() {
+      const card = Math.floor(Math.random() * 11) + 1;
+      cards.push(card);
+      document.getElementById("cards").textContent = cards.join(", ");
+      const total = cards.reduce((a, b) => a + b, 0);
+      document.getElementById("total").textContent = total;
+      if (total > 21) alert("Patladın!");
+      else if (total === 21) alert("Blackjack!");
+    }
+
+    function reset() {
+      cards = [];
+      document.getElementById("cards").textContent = "-";
+      document.getElementById("total").textContent = "0";
+    }
+  </script>
+</body>
+</html>
