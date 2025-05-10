@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Casino Giriş</title>
+  <style>
+    body {
+      font-family: Arial;
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      background: #202020;
+      color: white;
+      flex-direction: column;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Demo Casino Giriş</h2>
+  <input type="text" placeholder="Kullanıcı Adı" id="username"><br>
+  <input type="password" placeholder="Şifre" id="password"><br>
+  <button onclick="login()">Giriş Yap</button>
+
+  <script>
+    function login() {
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+      if (user && pass) {
+        alert("Demo giriş başarılı! (Gerçek sistem değil)");
+      } else {
+        alert("Lütfen kullanıcı adı ve şifre gir.");
+      }
+    }
+  </script>
+</body>
+</html>
